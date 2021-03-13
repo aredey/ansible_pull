@@ -1,0 +1,40 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  pre_tasks:
+    - name: update repositories
+      apt:
+        update_cache: yes
+      changed_when: False
+    
+  tasks:
+    - name: Install packages
+      apt:
+        name:
+          - htop
+          - mc
+          - screen
+          - neofetch
+          - net-tools 
+          - script
+          - tree
+    - name: create ansible user
+      user:
+        name: ansible
+        system: yes
+   
+    - name: copy sudoers_ansible
+      copy:
+        src: files/sudoers_ansible
+        dest: /etc/sudoers.d/ansible
+        owner: root
+        group: root
+        mode: 0440
+    - name: install cron job (ansible-pull)
+      cron:
+        user: ansible
+        name: "ansible provision"
+        minute: "*/10"
+        job: "/usr/bin/ansible-pull -o -U https://github.com/aredey/ansible_pull > /dev/null"
+
