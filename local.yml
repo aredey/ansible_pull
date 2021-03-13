@@ -18,18 +18,33 @@
           - neofetch
           - net-tools 
           - tree
+
     - name: create ansible user
       user:
         name: ansible
         system: yes
    
-    - name: copy sudoers_ansible
+    - name: copy .bashrc file
       copy:
-        src: files/sudoers_ansible
-        dest: /etc/sudoers.d/ansible
-        owner: root
-        group: root
-        mode: 0440
+        src: files/bashrc
+        dst: /home/redey/.bashrc
+        owner: redey
+        group: redey
+
+    - name: copy .screenrc file
+      copy:
+        src: files/screenrc
+        dst: /home/redey/.screenrc
+        owner: redey
+        group: redey
+
+    - name: copy .vimrc file
+      copy:
+        src: files/vimrc
+        dst: /home/redey/.vimrc
+        owner: redey
+        group: redey
+
     - name: install cron job (ansible-pull)
       cron:
         user: ansible
