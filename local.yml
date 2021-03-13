@@ -32,7 +32,7 @@
           alias fgrep='fgrep --color=auto'
           alias grep='grep --color=auto'
           alias q='exit'
-          alias ipconfig=\"ip -4 a | egrep '^[0-9]+:.*:|inet\ .*/'\" "
+          alias ipconfig=\"ip -4 a | egrep '^[0-9]+:.*:|inet\ .*/'\" " "
 
     - name: copy .screenrc file
       copy:
