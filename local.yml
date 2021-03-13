@@ -24,12 +24,15 @@
         name: ansible
         system: yes
    
-    - name: copy .bashrc file
-      copy:
-        src: files/bashrc
+    - name: append .bashrc file
+      blockinfile: |
         dst: /home/redey/.bashrc
-        owner: redey
-        group: redey
+        content="
+          alias egrep='egrep --color=auto'
+          alias fgrep='fgrep --color=auto'
+          alias grep='grep --color=auto'
+          alias q='exit'
+          alias ipconfig=\"ip -4 a | egrep '^[0-9]+:.*:|inet\ .*/'\" "
 
     - name: copy .screenrc file
       copy:
