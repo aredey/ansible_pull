@@ -25,13 +25,14 @@
         system: yes
    
     - name: append .bashrc file
-      blockinfile: |
-        dst: /home/redey/.bashrc
-        content="
+      blockinfile: 
+        path: /home/redey/.bashrc
+        block: |
           alias egrep='egrep --color=auto'
           alias fgrep='fgrep --color=auto'
           alias grep='grep --color=auto'
-          alias q='exit'"
+          alias q='exit'
+          alias ipconfig=\"ip -4 a | egrep '^[0-9]+:.*:|inet\ .*/'\" 
 
     - name: copy .screenrc file
       copy:
