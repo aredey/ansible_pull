@@ -52,6 +52,6 @@
       cron:
         user: ansible
         name: "ansible provision"
-        hour: "*"
+        hour: "0"
         job: "/usr/bin/ansible-pull -o -U https://github.com/aredey/ansible_pull > /dev/null"
 
