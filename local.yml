@@ -37,14 +37,14 @@
     - name: copy .screenrc file
       copy:
         src: files/screenrc
-        dst: /home/redey/.screenrc
+        dest: /home/redey/.screenrc
         owner: redey
         group: redey
 
     - name: copy .vimrc file
       copy:
         src: files/vimrc
-        dst: /home/redey/.vimrc
+        dest: /home/redey/.vimrc
         owner: redey
         group: redey
 
